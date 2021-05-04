@@ -64,7 +64,7 @@ public class JwtAuthenticationProvider extends Configured implements PasswdAuthe
         if (claims.containsKey("sub")) {
             subSuffix = claims.get("sub").asString().substring(0, 3);
         } else {
-            throw new AuthenticationException("Missing sub claim from toke.");
+            throw new AuthenticationException("Missing sub claim from token.");
         }
 
         String jwtUsername;
@@ -73,6 +73,9 @@ public class JwtAuthenticationProvider extends Configured implements PasswdAuthe
             jwtUsername = jwtUsername + subSuffix;
         } else if (claims.containsKey("cognito:username")) {
             jwtUsername = claims.get("cognito:username").asString();
+            jwtUsername = jwtUsername + subSuffix;
+        } else if (claims.containsKey("username")) {
+            jwtUsername = claims.get("username").asString();
             jwtUsername = jwtUsername + subSuffix;
         } else {
             throw new AuthenticationException("JWT doesn't contain username claim");
