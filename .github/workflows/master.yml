@@ -52,7 +52,7 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --severity-threshold=high --policy-path=./.snyk --org=dwp-dataworks
+          args: --severity-threshold=high --policy-path=./.snyk --org=dwp-dataworks --configuration-matching=runtimeClasspath
 
   publish-github-release:
     runs-on: ubuntu-latest
