@@ -11,5 +11,13 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+
       - name: build
         run: ./gradlew clean build
+
+      - name: snyk-scan
+        uses: snyk/actions/gradle@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --org=dwp-dataworks --severity-threshold=high --configuration-matching=runtimeClasspath
