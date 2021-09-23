@@ -1,9 +1,8 @@
 # analytical-env-hive-custom-auth
 
-## DataWorks Analytical Environment custom authentication proivder for HiveServer 2
+## DataWorks Analytical Environment custom authentication provider for HiveServer 2
 
-This repo contains Makefile to fit the standard pattern.
-This repo is a base to create new non-Terraform repos, adding the githooks submodule, making the repo ready for use.
+This repo provides a custom authenticator for Hive which requires a valid JWT token for a user to represent the password.
+The plugin is done via [Pluggable Authentication](https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/cdh_sg_hiveserver2_security.html#concept_hdt_ngx_nm) which specifies the changes required to the hive site files.
 
-After cloning this repo, please run:  
-`make bootstrap`
+See the [aws-analytical-env](http://github.com/dwp/aws-analytical-env/blob/master/terraform/modules/emr/templates/emr/hive_auth_conf.sh) repository for where it is used.
