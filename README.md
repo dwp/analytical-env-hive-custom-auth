@@ -1,3 +1,5 @@
+# DO NOT USE THIS REPO - MIGRATED TO GITLAB
+
 # analytical-env-hive-custom-auth
 
 ## DataWorks Analytical Environment custom authentication provider for HiveServer 2
